@@ -8,3 +8,4 @@ Setup instructions:
 3) 'cd ../' back into root folder
 4) run 'npm install'
 5) run 'npm run start'
+6) view site at 'http://localhost:3000'
