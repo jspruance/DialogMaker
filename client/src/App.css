@@ -45,6 +45,16 @@ body {
   cursor: default;
 }
 
+.nes-btn, .nes-select select {
+  font-family: 'Press Start 2P'; 
+  font-weight: normal; 
+  font-style: normal;
+}
+
+.nes-select select option {
+  padding: .5em;
+}
+
 .is-base {
   color: #fff;
   background-color: #32CCFE;
@@ -65,6 +75,9 @@ h1 {
 }
 
 /* utility classes */
+.is-half {
+  width: 50%;
+}
 
 .white-text {
   color: #fff !important;
