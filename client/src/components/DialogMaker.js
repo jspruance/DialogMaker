@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import bulmaSteps from 'bulma-steps/dist/js/bulma-steps.min.js';
-import WaterfallDialogMaker from './WaterfallDialogMaker';
-import StandalonePromptDialogMaker from './StandalonePromptDialogMaker';
-import ComponentDialogMaker from './ComponentDialogMaker';
+import WaterfallDialogMaker from './create/WaterfallDialogMaker';
+import StandalonePromptDialogMaker from './create/StandalonePromptDialogMaker';
+import ComponentDialogMaker from './create/ComponentDialogMaker';
 
 export default class DialogMaker extends Component {
   

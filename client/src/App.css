@@ -31,11 +31,16 @@
   border-top: 2px solid #00D1B2;
 }
 
+/* Waterfall dialog [create] */
+.waterfall-step {
+  width: 100%;
+}
+
 .dialogs-wrapper .dialogs-steps {
   padding: 2.3em;
 }
 
-/* Home ontent component */
+/* Home content component */
 .home-content {
   padding: 2em;
 }
