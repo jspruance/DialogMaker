@@ -14,7 +14,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/dialogs" component={DialogMaker} />
+            <Route exact path="/dialogs/create" component={DialogMaker} />
           </Switch>
           <Footer />
         </div>

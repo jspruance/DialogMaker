@@ -12,7 +12,7 @@ export default function HomeContent() {
                     <div className="card-content">
                         <div className="content">
                             <h4>Create dialogs</h4>
-                            <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut consequat semper viverra nam.</p>
+                            <p>Use the Dialog Maker's UI to easily and conveniently compose dialogs for your bots.</p>
                             <p><a href="/about">Learn more</a></p>
                         </div>
                     </div>
@@ -26,8 +26,7 @@ export default function HomeContent() {
                     <div className="card-content">
                         <div className="content">
                             <h4>Easy integration</h4>
-                            <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
-                            sed risus.</p>
+                            <p>Export your dialog and drop it into your bot project's 'dialogs' folder.</p>
                             <p><a href="/about">Learn more</a></p>
                         </div>
                     </div>
@@ -41,7 +40,7 @@ export default function HomeContent() {
                      <div className="card-content">
                         <div className="content">
                             <h4>Save your dialogs</h4>
-                            <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                            <p>Create an account and save your dialogs to your own personal dialogs library.</p>
                             <p><a href="/about">Learn more</a></p>
                         </div>
                     </div>
