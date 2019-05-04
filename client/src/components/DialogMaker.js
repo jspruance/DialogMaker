@@ -76,7 +76,7 @@ export default class DialogMaker extends Component {
                         </div>
                         <div className="field-body">
                           <div className="field">
-                            <div className="nes-select is-half is-size-6">
+                            <div className="select is-primary is-medium">
                               <select
                                 value={this.state.dialogType}
                                 onChange={this.onDialogTypeChange}>
