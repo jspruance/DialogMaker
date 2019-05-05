@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WaterfallStep from './WaterfallStep';
+const uuidv4 = require('uuid/v4');
 
 export default class WaterfallDialogMaker extends Component {
 
@@ -7,16 +8,16 @@ export default class WaterfallDialogMaker extends Component {
     steps: []
   }
 
-  handleAddStep = (e) => {
+  handleAddStep = async (e) => {
     e.preventDefault();
-    this.setState({steps: [...this.state.steps, {}]});
+    const defaultStep = {id: uuidv4(), items: []};
+    await this.setState({steps: [...this.state.steps, defaultStep]});
+    console.log(this.state.steps);
   }
 
-  handleDeleteStep = (e) => {
+  handleDeleteStep = (id, e) => {
     e.preventDefault();
-    const newSteps = this.state.steps;
-    newSteps.pop();
-    this.setState({steps: newSteps});
+    this.setState({steps: this.state.steps.filter((step) => step.id !== id)});
   }
 
   render() {
@@ -33,17 +34,23 @@ export default class WaterfallDialogMaker extends Component {
             </div>
             <div className="level-right">
               <span className="level-item">
-                <button onClick={ this.handleAddStep } className="button is-success white-text">+ Add step</button>
+                <button onClick={this.handleAddStep} className="button is-success has-text-white">+ Add step</button>
               </span>
             </div>
           </div>
           {
-            this.state.steps.map((step) => {
-              return (<div className="level">
-                <div className="level-item">
-                  <WaterfallStep handleDeleteStep={ this.handleDeleteStep } />
+            this.state.steps.map((step, i) => {
+              return (
+                <div key={i + 1} className="level">
+                  <div key={i + 1} className="level-item">
+                    <WaterfallStep 
+                      key={step.id} 
+                      id={step.id}
+                      handleDeleteStep={this.handleDeleteStep} 
+                    />
+                  </div>
                 </div>
-              </div>)
+              )
             })
           }
         </div>

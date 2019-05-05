@@ -34,6 +34,12 @@
 /* Waterfall dialog [create] */
 .waterfall-step {
   width: 100%;
+  color: white;
+}
+
+x.waterfall-step.has-text-white,
+x.waterfall-step.has-text-white .subtitle strong {
+  color: white !important;
 }
 
 .dialogs-wrapper .dialogs-steps {
@@ -82,10 +88,6 @@ h1 {
 /* utility classes */
 .is-half {
   width: 50%;
-}
-
-.white-text {
-  color: #fff !important;
 }
 
 .has-margin-05 {

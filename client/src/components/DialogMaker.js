@@ -110,8 +110,8 @@ export default class DialogMaker extends Component {
                   <p>Please review your dialog</p>
                 </div>
                 <div className="step-content has-text-centered">
-                  <button className="nes-btn is-success is-large white-text">Export dialog ></button>
-                  <button className="nes-btn is-primary is-large white-text has-margin-left-1">Save dialog ></button>
+                  <button className="nes-btn is-success is-large has-text-white">Export dialog ></button>
+                  <button className="nes-btn is-primary is-large has-text-white has-margin-left-1">Save dialog ></button>
                 </div>
               </div>
               <div className="steps-actions">
