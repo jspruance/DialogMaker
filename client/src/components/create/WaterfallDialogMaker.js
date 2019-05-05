@@ -7,36 +7,43 @@ export default class WaterfallDialogMaker extends Component {
     steps: []
   }
 
-  addStepHandler = (e) => {
+  handleAddStep = (e) => {
     e.preventDefault();
     this.setState({steps: [...this.state.steps, {}]});
+  }
+
+  handleDeleteStep = (e) => {
+    e.preventDefault();
+    const newSteps = this.state.steps;
+    newSteps.pop();
+    this.setState({steps: newSteps});
   }
 
   render() {
     return (
       <div className="card">
         <div className="card-content">
-          <div class="level">
-            <div class="level-left">
-              <div class="level-item">
-                <p class="subtitle is-5">
+          <div className="level">
+            <div className="level-left">
+              <div className="level-item">
+                <p className="subtitle is-5">
                   <strong>Waterfall dialog</strong>
                 </p>
               </div>
             </div>
-            <div class="level-right">
-              <span class="level-item">
-                <a onClick={ this.addStepHandler } class="button is-success white-text">+ Add step</a>
+            <div className="level-right">
+              <span className="level-item">
+                <button onClick={ this.handleAddStep } className="button is-success white-text">+ Add step</button>
               </span>
             </div>
           </div>
           {
-            this.state.steps.map(step => {
-              return <div class="level">
+            this.state.steps.map((step) => {
+              return (<div className="level">
                 <div className="level-item">
-                  <WaterfallStep />
+                  <WaterfallStep handleDeleteStep={ this.handleDeleteStep } />
                 </div>
-              </div>
+              </div>)
             })
           }
         </div>

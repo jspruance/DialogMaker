@@ -6,10 +6,6 @@ export default class WaterfallStep extends Component {
     items: []
   }
 
-  deleteStepHandler = (e) => {
-    e.preventDefault();
-  }
-
   render() {
     return (
       <div className="box waterfall-step">
@@ -23,7 +19,7 @@ export default class WaterfallStep extends Component {
           </div>
           <div className="level-right">
             <span className="level-item">
-              <a onClick={ this.deleteStepHandler } class="delete is-medium"></a>
+              <button onClick={ this.props.deleteStepHandler } className="delete is-medium">delete</button>
             </span>
           </div>
         </nav>

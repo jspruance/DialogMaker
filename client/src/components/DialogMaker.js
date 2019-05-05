@@ -77,6 +77,7 @@ export default class DialogMaker extends Component {
                         <div className="field-body">
                           <div className="field">
                             <div className="select is-primary is-medium">
+                            {/*<div className="nes-select is-half">*/}
                               <select
                                 value={this.state.dialogType}
                                 onChange={this.onDialogTypeChange}>
@@ -109,8 +110,8 @@ export default class DialogMaker extends Component {
                   <p>Please review your dialog</p>
                 </div>
                 <div className="step-content has-text-centered">
-                  <a class="nes-btn is-success is-large white-text">Export dialog ></a>
-                  <a class="nes-btn is-primary is-large white-text has-margin-left-1">Save dialog ></a>
+                  <button className="nes-btn is-success is-large white-text">Export dialog ></button>
+                  <button className="nes-btn is-primary is-large white-text has-margin-left-1">Save dialog ></button>
                 </div>
               </div>
               <div className="steps-actions">
