@@ -1,24 +1,7 @@
 import React, { Component } from 'react';
-import WaterfallStep from './WaterfallStep';
-const uuidv4 = require('uuid/v4');
+import DialogStep from './DialogStep';
 
 export default class WaterfallDialogMaker extends Component {
-
-  state = {
-    steps: []
-  }
-
-  handleAddStep = async (e) => {
-    e.preventDefault();
-    const defaultStep = {id: uuidv4(), items: []};
-    await this.setState({steps: [...this.state.steps, defaultStep]});
-    console.log(this.state.steps);
-  }
-
-  handleDeleteStep = (id, e) => {
-    e.preventDefault();
-    this.setState({steps: this.state.steps.filter((step) => step.id !== id)});
-  }
 
   render() {
     return (
@@ -34,19 +17,22 @@ export default class WaterfallDialogMaker extends Component {
             </div>
             <div className="level-right">
               <span className="level-item">
-                <button onClick={this.handleAddStep} className="button is-success has-text-white">+ Add step</button>
+                <button onClick={this.props.handleAddStep} className="button is-success has-text-white">+ Add step</button>
               </span>
             </div>
           </div>
           {
-            this.state.steps.map((step, i) => {
+            this.props.dialog.steps.map((step, i) => {
               return (
                 <div key={i + 1} className="level">
                   <div key={i + 1} className="level-item">
-                    <WaterfallStep 
+                    <DialogStep
                       key={step.id} 
                       id={step.id}
-                      handleDeleteStep={this.handleDeleteStep} 
+                      items={step.items}
+                      handleAddStep={this.props.handleAddStep}
+                      handleAddItem={this.props.handleAddItem}
+                      handleDeleteStep={this.props.handleDeleteStep}
                     />
                   </div>
                 </div>

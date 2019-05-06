@@ -3,33 +3,100 @@ import bulmaSteps from 'bulma-steps/dist/js/bulma-steps.min.js';
 import WaterfallDialogMaker from './create/WaterfallDialogMaker';
 import StandalonePromptDialogMaker from './create/StandalonePromptDialogMaker';
 import ComponentDialogMaker from './create/ComponentDialogMaker';
+const uuidv4 = require('uuid/v4');
 
 export default class DialogMaker extends Component {
   
   state = {
     step: 1,
-    dialogType: "waterfalldialog",
-    dialogSteps: []
+    dialog: {
+      name: "my dialog",
+      type: "waterfalldialog",
+      steps: [
+        {
+          "id": uuidv4(),
+          "items": [
+            {
+              "type": "message",
+              "value": "hello world"
+            }
+          ]
+        }
+      ]
+    }
   }
 
   componentDidMount() {
     bulmaSteps.attach();
+    console.log(this.state);
   }
 
-  onNextStep = async (event) => {
+  onNextStep = (event) => {
     event.preventDefault();
-    await this.setState({ step: this.state.step + 1 });
-    console.log(`Dialog type: ${this.state.dialogType}`);
+    this.setState((state) => ({
+      step: state.step + 1
+    }));
+    console.log(`Dialog type: ${this.state.dialog.type}`);
   }
 
-  onPreviousStep = async (event) => {
+  onPreviousStep = (event) => {
     event.preventDefault();
-    await this.setState({ step: this.state.step - 1 });
-    console.log(`Dialog type: ${this.state.dialogType}`);
+    this.setState((state) => ({
+      step: this.state.step - 1
+    }));
+    console.log(`Dialog type: ${this.state.dialog.type}`);
   }
 
-  onDialogTypeChange = async (event) => {
-    await this.setState({ dialogType: event.target.value });
+  onDialogTypeChange = (event) => {
+    this.setState({dialog: { type: event.target.value }});
+  }
+
+  handleAddStep = async(e) => {
+    e.preventDefault();
+    const newStep = {
+      "id": uuidv4(),
+      "items": [
+        {
+          "id": uuidv4(),
+          "type": "message",
+          "value": ""
+        }
+      ]
+    };
+    this.setState((state) => ({
+      dialog: {
+        ...state.dialog,
+        steps: [...state.dialog.steps, newStep]
+      }
+    }));
+    await console.log(this.state);
+  }
+
+  handleAddItem = async(stepid, e) => {
+    console.log('hello');
+    e.preventDefault();
+    const newItem = {
+      "id": uuidv4(),
+      type: "message",
+      value: "test"
+    };
+    this.setState((state) => ({
+      dialog: {
+        ...state.dialog,
+        steps: state.dialog.steps.map(step => (step.id === stepid ? {...step, items: [...step.items, newItem]} : step))
+      }
+    }));
+    await console.log(this.state);
+  }
+
+  handleDeleteStep = (stepid, e) => {
+    e.preventDefault();
+    this.setState((state, props) => ({
+      dialog: {
+        ...state.dialog,
+        steps: state.dialog.steps.filter((step) => step.id !== stepid)
+      }
+    }));
   }
 
   render() {
@@ -79,7 +146,7 @@ export default class DialogMaker extends Component {
                             <div className="select is-primary is-medium">
                             {/*<div className="nes-select is-half">*/}
                               <select
-                                value={this.state.dialogType}
+                                value={this.state.dialog.type}
                                 onChange={this.onDialogTypeChange}>
                                 <option value="waterfalldialog">waterfall dialog</option>
                                 <option value="standaloneprompt">standalone prompt</option>
@@ -94,16 +161,21 @@ export default class DialogMaker extends Component {
                 </div>
                 <div className="step-content has-text-centered">
                   {
-                    this.state.dialogType === 'waterfalldialog' &&
-                    <WaterfallDialogMaker />
+                    this.state.dialog.type === 'waterfalldialog' &&
+                    <WaterfallDialogMaker 
+                      dialog={this.state.dialog} 
+                      handleAddStep={this.handleAddStep}
+                      handleAddItem={this.handleAddItem}
+                      handleDeleteStep={this.handleDeleteStep}
+                    />
                   }
                   {
-                    this.state.dialogType === 'standaloneprompt' &&
-                    <StandalonePromptDialogMaker />
+                    this.state.dialog.type === 'standaloneprompt' &&
+                    <StandalonePromptDialogMaker dialog={this.state.dialog} />
                   }
                   {
-                    this.state.dialogType === 'componentdialog' &&
-                    <ComponentDialogMaker />
+                    this.state.dialog.type === 'componentdialog' &&
+                    <ComponentDialogMaker dialog={this.state.dialog} />
                   }
                 </div>
                 <div className="step-content has-text-centered">

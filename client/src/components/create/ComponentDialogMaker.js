@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 export default class ComponentDialogMaker extends Component {
 
-  state = {
-  }
-
   render() {
     return (
       <div className="card">

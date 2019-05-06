@@ -34,16 +34,19 @@
 /* Waterfall dialog [create] */
 .waterfall-step {
   width: 100%;
-  color: white;
-}
-
-x.waterfall-step.has-text-white,
-x.waterfall-step.has-text-white .subtitle strong {
-  color: white !important;
 }
 
 .dialogs-wrapper .dialogs-steps {
   padding: 2.3em;
+}
+
+.dialog-item-value input {
+  min-width: 500px;
+}
+
+.item-input-label {
+  text-align: left;
+  min-width: 105px;
 }
 
 /* Home content component */
@@ -96,6 +99,10 @@ h1 {
 
 .has-margin-1 {
   margin: 1em;
+}
+
+.has-margin-left-05 {
+  margin: .5em;
 }
 
 .has-margin-left-1 {
