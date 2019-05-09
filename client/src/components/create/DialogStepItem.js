@@ -3,12 +3,16 @@ import React, { Component } from 'react';
 export default class DialogStepItem extends Component {
 
   state = {
-    isEditMode: false,
-    itemtype: "message"
+    itemtype: this.props.item.type || "message",
+    itemvalue: this.props.item.value || ""
   }
 
   handleChangeItemType = (e) => {
     this.setState({itemtype: e.target.value});
+  }
+
+  handleChangeItemValue = (e) => {
+    this.setState({itemvalue: e.target.value});
   }
 
   render() {
@@ -19,7 +23,7 @@ export default class DialogStepItem extends Component {
             <span>item type:</span>
             <div className="control">
               <div className="select is-primary is-small has-margin-left-1">
-                <select onChange={this.handleChangeItemType}>
+                <select value={this.state.itemtype} onChange={this.handleChangeItemType}>
                   <option value="message">message</option>
                   <option value="prompt">prompt</option>
                   <option value="replycaputre">reply caputre</option>
@@ -34,7 +38,13 @@ export default class DialogStepItem extends Component {
               <span className="item-input-label">message text:</span>
               <div className="field has-margin-left-05 ">
                 <div className="control">
-                  <input className="input is-primary is-small" type="text" placeholder="Text input" />
+                  <input 
+                    className="input is-primary is-small" 
+                    type="text" 
+                    placeholder="Text input"
+                    value={this.state.itemvalue}
+                    onChange={this.handleChangeItemValue}
+                  />
                 </div>
               </div>
             </div>
@@ -45,7 +55,13 @@ export default class DialogStepItem extends Component {
               <span className="item-input-label">prompt text:</span>
               <div className="field has-margin-left-05 ">
                 <div className="control">
-                  <input className="input is-primary is-small" type="text" placeholder="Text input" />
+                  <input 
+                    className="input is-primary is-small" 
+                    type="text" 
+                    placeholder="Text input" 
+                    value={this.state.itemvalue}
+                    onChange={this.handleChangeItemValue}
+                  />
                 </div>
               </div>
             </div>
@@ -56,7 +72,13 @@ export default class DialogStepItem extends Component {
               <span className="item-input-label">variable name:</span>
               <div className="field has-margin-left-05 ">
                 <div className="control">
-                  <input className="input is-primary is-small" type="text" placeholder="Text input" />
+                  <input 
+                    className="input is-primary is-small" 
+                    type="text" 
+                    placeholder="Text input" 
+                    value={this.state.itemvalue}
+                    onChange={this.handleChangeItemValue}
+                  />
                 </div>
               </div>
             </div>
@@ -67,14 +89,22 @@ export default class DialogStepItem extends Component {
               <span className="item-input-label">custom code:</span>
               <div className="field has-margin-left-05 ">
                 <div className="control">
-                  <input className="input is-primary is-small" type="text" placeholder="Text input" />
+                  <input 
+                    className="input is-primary is-small" 
+                    type="text" 
+                    placeholder="Text input" 
+                    value={this.state.itemvalue}
+                    onChange={this.handleChangeItemValue}
+                  />
                 </div>
               </div>
             </div>
           }
         </div>
         <div className="level-right">
-          edit
+          <span className="level-item">
+            <button onClick={ (e) => this.props.handleDeleteStep(this.props.id, e) } className="delete is-small">delete</button>
+          </span>
         </div>
       </div>
     )

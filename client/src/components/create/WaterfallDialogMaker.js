@@ -32,6 +32,7 @@ export default class WaterfallDialogMaker extends Component {
                       items={step.items}
                       handleAddStep={this.props.handleAddStep}
                       handleAddItem={this.props.handleAddItem}
+                      handleSaveStepEdits={this.props.handleSaveStepEdits}
                       handleDeleteStep={this.props.handleDeleteStep}
                     />
                   </div>

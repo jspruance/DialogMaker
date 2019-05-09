@@ -78,7 +78,7 @@ export default class DialogMaker extends Component {
     const newItem = {
       "id": uuidv4(),
       type: "message",
-      value: "test"
+      value: ""
     };
     this.setState((state) => ({
       dialog: {
@@ -87,6 +87,17 @@ export default class DialogMaker extends Component {
       }
     }));
     await console.log(this.state);
+  }
+
+  handleSaveStepEdits = async(stepid, stepitems) => {
+    this.setState((state) => ({
+      dialog: {
+        ...state.dialog,
+        steps: state.dialog.steps.map(step => (step.id === stepid ? {...step, items: stepitems} : step))
+      }
+    }));
+    await console.log('Changes saved. Here is your dialog:');
+    await console.log(this.state.dialog);
   }
 
   handleDeleteStep = (stepid, e) => {
@@ -166,6 +177,7 @@ export default class DialogMaker extends Component {
                       dialog={this.state.dialog} 
                       handleAddStep={this.handleAddStep}
                       handleAddItem={this.handleAddItem}
+                      handleSaveStepEdits={this.handleSaveStepEdits}
                       handleDeleteStep={this.handleDeleteStep}
                     />
                   }
